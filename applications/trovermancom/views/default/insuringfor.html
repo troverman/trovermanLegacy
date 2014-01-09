@@ -1,0 +1,44 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+    
+	<a id="link_div_insuringfor" href="http://www.insuringfor.com">
+    <img id="images_div_insuringfor" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/insuringfor.png" />
+	<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">insuringfor</h3>
+    </a>       
+</div>
+<div class="main-content"><br>
+    <p class="lead">what if?</p>
+    <p class="lead">insurance is something we all need.</p>
+    <p class="lead">but we should also realize that profiting on the worry and uncertainity of others only compounds problems.</p>
+    <p class="lead">crowdowned, opensource, nonprofit, transparent, insurance service</p>
+</div>
+
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_insuringfor').hover(function() {
+			$('#images_div_insuringfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_insuringfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_insuringfor').hover(function() {
+			$('#images_div_insuringfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_insuringfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+	});
+
+</script>

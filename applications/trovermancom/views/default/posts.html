@@ -1,0 +1,67 @@
+{{extend 'layout.html'}}
+<style>
+    #left {
+    
+        float: left;
+        width: 155px;
+        border-right:1px solid rgb(210,210,210);
+        
+    }
+    #content { 
+
+        margin-left:180px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
+         
+	}
+</style>
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248)
+    ">
+        {{if request.args(1) is None:}}
+			<h3 style="margin-left:12%;color:rgb(70,70,70)">posts</h3>
+        {{else:}}
+        <h3 style="display:inline-block;margin-left:12%;color:rgb(70,70,70)">posts</h3><span style="margin-left:10px;display:inline-block;font-size:16px;color:rgb(80,80,80)">-</span><span style="margin-left:10px;display:inline-block;font-size:16px;color:rgb(80,80,80)">{{=request.args(1)}}</span>
+        {{pass}}
+</div>
+
+<br>
+
+<div style="margin-left:12%;margin-right:12%;">
+{{if request.args(0) == 'tag':}}
+	
+	
+	<div id="left">
+        {{for tag in reversed(sorted_combined_count_and_tag_array):}}
+        <a href="/posts/tag/{{=tag[0]}}">{{=tag[0]}} - <span style="font-size:12px;color:rgb(100,100,100)">( {{=tag[1]}} )</span></a><br>
+        {{pass}}
+	</div>
+    
+    <div id="content">
+        {{for post in post_array:}}
+        	<h4><a href="/post/{{=post['url_title']}}">{{=post['title']}}</a></h4>
+        {{pass}}
+        
+
+    </div>
+	
+{{else:}}
+    
+    <div id="left">
+        {{for tag in reversed(tag_thread_list_sorted_by_total_count):}}
+        <a href="/posts/tag/{{=tag[0]}}">{{=tag[0]}} - <span style="font-size:12px;color:rgb(100,100,100)">( {{=tag[1]}} )</span></a><br>
+        {{pass}}
+    </div>
+    
+    <div id="content">
+        {{for post in reversed(posts_list):}}
+            <h4><a href="/post/{{=post['url_title']}}">{{=post['title']}}</a></h4>
+        {{pass}}
+        
+    </div>
+    
+{{pass}}
+</div>

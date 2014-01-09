@@ -1,0 +1,64 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+    
+	<a id="link_div_inlrn" href="http://www.inlrn.com">
+	<img id="images_div_inlrn" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/inlrn.png" />
+	<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">inlrn</h3>
+	</a>    
+	 
+</div>
+<div class="main-content">
+    <br>
+    
+	{{for count, image in enumerate(image_array):}}
+		<div id="picture-{{=count}}" style="">
+			<img id="images_div" src="{{=URL('download',args=image[1])}}" class="img-polaroid" style="margin-left:auto;margin-right:auto;display:block;height:500px;" id="picutre-" />
+        </div>
+    {{pass}}
+    
+    <br><hr><br>
+    
+    <p class="lead">the internet is learning</p>
+	<p class="lead">the current education system is... filled with money.. for money.</p>
+	<p class="lead">to make money, aka get a 'good' job, and to contribute, we have to go into debt..</p>
+	<p class="lead">it's time to stop memorizing, to stop reguraitating, and to stop going to school simply for necessity.</p>
+	<p class="lead">it's time to learn for the sake of learning, for the sake of evolution.</p>
+	
+    <p class="lead">education is a fundamental human right, and needs to be set free. we have the means, we must simply act on the will.</p>
+
+    <p class="lead">free, crowd owned, voetr enabled, givingfor powered, transparent, learning platform</p><hr>
+	<p class="lead">lets do this</p>
+
+
+
+</div>
+
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_inlrn').hover(function() {
+			$('#images_div_inlrn').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_inlrn').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_inlrn').hover(function() {
+			$('#images_div_inlrn').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_inlrn').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+	});
+
+</script>

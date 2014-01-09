@@ -1,0 +1,49 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+    
+        <a id="link_div_lealr" href="http://www.lealr.com">
+        <img id="images_div_lealr" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/lealr.png" />
+		<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">lealr</h3>
+        </a>
+</div>
+<div class="main-content"><br>
+    <p class="lead"><a>oh leal</a>
+    <p class="lead">promote, monetize, collect, and organically organize information.</p>
+    <p class="lead">lealr is non profit, crowd owned, completly transparent, and opensource! (this is a good thing)</p>
+	<p class="lead">givingfor connected</p>
+    <p class="lead"><a href="http://www.github.com/troverman/lealr">github</a> <a href="http://www.facebook.com/lealrcom">facebook</a> <a href="http://www.twitter.com/lealrcom">twitter</a></p>
+
+
+
+</div>
+
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_lealr').hover(function() {
+			$('#images_div_lealr').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_lealr').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_lealr').hover(function() {
+			$('#images_div_lealr').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_lealr').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+	});
+
+</script>

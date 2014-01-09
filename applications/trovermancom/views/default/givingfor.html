@@ -1,0 +1,56 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+
+    <a id="link_div_givingfor" href="http://www.givingfor.com">
+    <img id="images_div_givingfor" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/givingfor.png" />
+	<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">givingfor</h3>
+    </a>
+        
+</div>
+<div class="main-content"><br>
+    
+    <p class="lead">to help those in need.</p>
+	<p class="lead">giving is recieving.</p>
+    <p class="lead">how can we move forward as a species?</p>
+    <p class="lead">how can we move away from disparity and polarization in every acpect of the human experience?</p>
+    <p class="lead">how can your time better be spent, and how can we create a better tomorrow?</p>
+    <p class="lead">people engaged together to help change the world.</p>
+    <p class="lead">leading by example.</p>
+    <br>
+    <p class="lead">non profit</p>
+    <p class="lead">crowd funded</p>
+	<p class="lead">crowd owned</p>
+    <p class="lead">voetr committee</p>
+	<p class="lead">completly transparent, and open source.</p>
+	
+</div>
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_givingfor').hover(function() {
+			$('#images_div_givingfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_givingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_givingfor').hover(function() {
+			$('#images_div_givingfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_givingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+	});
+
+</script>

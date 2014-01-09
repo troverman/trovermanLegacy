@@ -1,0 +1,281 @@
+{{extend 'layout.html'}}
+<style>
+    #images_div{margin-top:13%;margin-left:auto;margin-right:auto;display:block;height:500px;}
+    #images_div:hover{border:1px solid rgb(100,100,100);}  
+    a:hover{cursor:pointer;} 
+	.img-polaroid{padding:1px;}
+    #title-area{
+		border-bottom:1px solid rgb(210,210,210);
+    	padding:5px;
+		padding-bottom:10px;
+    	margin-left:-15px;
+    	margin-top:-32px;
+    	background-color:rgb(248,248,248);
+    }
+</style>
+
+<div id="title-area">   
+    <h3 style="margin-left:12%;color:rgb(70,70,70)">projects</h3>  
+</div>
+
+<div class="main-content">
+    <div>
+        <br><br>
+    </div> 
+    <div id="projects-bar" style="margin-left:15px;float:left;">
+		<a id="link_div_bankingfor" href="/bankingfor">
+        	<img id="images_div_bankingfor" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/bankingfor.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">bankingfor</h4>
+        </a>
+        <br><br>
+		<a id="link_div_conexus" href="/conexus">
+			<img id="images_div_conexus" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/super_orb_new.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">conex.us</h4>
+        </a>
+        <br><br>
+		<a id="link_div_deliveryfor" href="/deliveryfor">        
+			<img id="images_div_deliveryfor" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/deliveryfor.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">deliveryfor</h4>
+        </a>
+        <br><br>  
+		<a id="link_div_epointme" href="/epointme">        
+			<img id="images_div_epointme" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/epointme.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">epoint.me</h4>
+        </a>
+        <br><br>
+        <a id="link_div_evolvedus" href="/evolvedus">        
+			<img id="images_div_evolvedus" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/super_orb_new.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">evolved us</h4>
+        </a>
+        <br><br>
+      	<a id="link_div_givingfor" href="/givingfor">  
+			<img id="images_div_givingfor" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/super_orb_new.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">givingfor</h4>
+        </a>
+        <br><br>
+		<a id="link_div_hospitalityfor" href="/hospitalityfor">
+		<img id="images_div_hospitalityfor" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/super_orb_new.png" />
+        <h4 style="display:inline-block;margin-left:15px;">hospitalityfor</h4>
+        </a>
+        <br><br>
+		<a id="link_div_inlrn" href="/inlrn">
+			<img id="images_div_inlrn" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/inlrn.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">inlrn</h4>
+        </a>
+        <br><br>
+		<a id="link_div_insuringfor" href="/insuringfor">        
+			<img id="images_div_insuringfor" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/super_orb_new.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">insuringfor</h4>
+        </a>
+        <br><br>
+        
+		<a id="link_div_investingfor" href="/investingfor">
+			<img id="images_div_investingfor" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/super_orb_new.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">investingfor</h4>
+        </a>
+        <br><br>
+		<a id="link_div_lealr" href="/lealr">
+			<img id="images_div_lealr" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/lealr.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">lealr</h4>
+        </a>
+        <br><br>
+		<a id="link_div_troverman" href="/troverman">
+			<img id="images_div_troverman" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/troverman.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">troverman</h4>
+        </a>
+        <br><br>
+		<a id="link_div_voetr" href="/voetr">		
+			<img id="images_div_voetr" style="height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/voetr.png" />
+        	<h4 style="display:inline-block;margin-left:15px;">voetr</h4>
+        </a>
+        <br><br>
+    </div>
+    <div>
+        {{for count, image in enumerate(random_picture_array):}}
+            <div id="picture-{{=count}}" style="display:none;" class="{{=image[0]}}">
+                <a href="/{{=image[0]}}"><img id="images_div" src="{{=URL('download',args=image[1])}}" class="img-polaroid" /></a>
+            </div>
+        {{pass}}
+    </div>
+</div>
+
+
+<script>
+	$(document).ready(function() {
+		var len_picture_array = {{=len(random_picture_array)}};
+		$('#picture-0').css('display','block');		        
+		function interval_function(){
+			
+			var i = Math.round((Math.random()) * len_picture_array);   
+        	if (i >= len_picture_array) --i;
+        	
+			for(var j = 0; j < len_picture_array; j++){
+                var css_picture_info_property = $('#picture-' + j).css('display');
+                if (css_picture_info_property == 'block'){
+                    var css_picture_info_property_index = j;
+                }
+                $('#picture-' + j).css('display','none');
+        	} 
+			while (i == css_picture_info_property_index){
+				i = Math.round((Math.random()) * len_picture_array);
+        		if (i >= len_picture_array) --i;                     
+			}
+            
+            
+            $('#picture-' + i).fadeToggle(1000, "linear");
+			$('#picture-' + i).css('display','block');
+
+    	}; 
+		timer = setInterval(interval_function,7000);
+		
+		$('#link_div_bankingfor').hover(function() {
+			$('#images_div_bankingfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_bankingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_bankingfor').hover(function() {
+			$('#images_div_bankingfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_bankingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_conexus').hover(function() {
+			$('#images_div_conexus').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_conexus').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_conexus').hover(function() {
+			$('#images_div_conexus').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_conexus').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_deliveryfor').hover(function() {
+			$('#images_div_deliveryfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_deliveryfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_deliveryfor').hover(function() {
+			$('#images_div_deliveryfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_deliveryfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_epointme').hover(function() {
+			$('#images_div_epointme').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_epointme').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_epointme').hover(function() {
+			$('#images_div_epointme').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_epointme').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_evolvedus').hover(function() {
+			$('#images_div_evolvedus').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_evolvedus').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_evolvedus').hover(function() {
+			$('#images_div_evolvedus').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_evolvedus').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_givingfor').hover(function() {
+			$('#images_div_givingfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_givingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_givingfor').hover(function() {
+			$('#images_div_givingfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_givingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_hospitalityfor').hover(function() {
+			$('#images_div_hospitalityfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_hospitalityfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_hospitalityfor').hover(function() {
+			$('#images_div_hospitalityfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_hospitalityfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_inlrn').hover(function() {
+			$('#images_div_inlrn').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_inlrn').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_inlrn').hover(function() {
+			$('#images_div_inlrn').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_inlrn').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_insuringfor').hover(function() {
+			$('#images_div_insuringfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_insuringfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_insuringfor').hover(function() {
+			$('#images_div_insuringfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_insuringfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_investingfor').hover(function() {
+			$('#images_div_investingfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_investingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_investingfor').hover(function() {
+			$('#images_div_investingfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_investingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_lealr').hover(function() {
+			$('#images_div_lealr').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_lealr').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_lealr').hover(function() {
+			$('#images_div_lealr').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_lealr').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_troverman').hover(function() {
+			$('#images_div_troverman').css('border','1px solid rgb(100,100,100)');
+			$('.troverman').css('display','block');
+        },function(){
+			$('#images_div_troverman').css('border','1px solid rgba(0,0,0,0.2)');
+			$('.troverman').css('display','none');
+        }); 
+        $('#images_div_troverman').hover(function() {
+			$('#images_div_troverman').css('border','1px solid rgb(100,100,100)');
+			$('.troverman').css('display','block');
+		},function(){
+			$('#images_div_troverman').css('border','1px solid rgba(0,0,0,0.2)');
+			$('.troverman').css('display','none');
+        });
+        
+        $('#link_div_voetr').hover(function() {
+			$('#images_div_voetr').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_voetr').css('border','1px solid rgba(0,0,0,0.2)');
+        });   
+        $('#images_div_voetr').hover(function() {
+			$('#images_div_voetr').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_voetr').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+            
+	});       
+
+
+</script>

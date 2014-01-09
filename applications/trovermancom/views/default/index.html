@@ -1,0 +1,172 @@
+{{extend 'layout.html'}}
+<style>
+    #images_div:hover{border:1px solid rgb(100,100,100);}  
+    a:hover{cursor:pointer;} 
+</style>
+<div style="margin-left:11%;margin-right:11%;">
+    {{for count, project in enumerate(random_picture_array):}}
+        <div id="picture-{{=count}}" style="display: none;">
+            <a id="picture-link-{{=count}}" href="/{{=project[0]}}">
+                <img id="images_div" src="{{=URL('download',args=project[1])}}" class="img-polaroid" style="margin-left:auto;margin-right:auto;display:block;height:500px;" id="picutre-" />
+            </a>
+        </div>
+    {{pass}}
+    <br>
+    <div style="text-align:center">
+        {{for count, project in enumerate(random_picture_array):}}
+            <a id="selector-{{=count}}" style="font-size:24px;">•</a>
+            <script>
+                $(document).ready(function() {
+                    var len_picture_array = {{=len(project_image_list)}};
+                    $('#selector-{{=count}}').click(function() {
+                        for(var j = 0; j < len_picture_array; j++){
+                            $('#picture-' + j).css('display','none');
+                        } 
+                        $('#picture-{{=count}}').fadeToggle(1000, "linear");
+                        $('#picture-{{=count}}').css('display','block');
+                    });
+                });       
+            </script>
+        {{pass}}
+    </div>
+    <script>
+        $(document).ready(function() {
+            var len_picture_array = {{=len(project_image_list)}} - 1;
+            $('#picture-0').css('display','block');
+            var len_post_array = {{=len(post_list)}};
+            function interval_function(){
+                var i = Math.round((Math.random()) * len_picture_array);   
+                if (i >= len_picture_array) --i;
+                for(var j = 0; j < len_picture_array; j++){
+                    var css_picture_info_property = $('#picture-' + j).css('display');
+                    if (css_picture_info_property == 'block'){
+                        var css_picture_info_property_index = j;
+                    }
+                    $('#picture-' + j).css('display','none');
+                } 
+                while (i == css_picture_info_property_index){
+                    i = Math.round((Math.random()) * len_picture_array);
+                    if (i >= len_picture_array) --i;                     
+                }
+                $('#picture-' + i).fadeToggle(1000, "linear");
+                $('#picture-' + i).css('display','block');
+            }; 
+            timer = setInterval(interval_function,7000);
+            
+            $('#selector-0').addClass('active');
+            $('#content-0').addClass('active');
+            function post_interval_function(){
+                var k = Math.round((Math.random()) * len_post_array);   
+                if (k >= len_post_array) --k;
+                for(var j = 0; j < len_post_array; j++){
+                    $('#selector-' + j).removeClass('active');
+                    $('#content-' + j).removeClass('active');
+                }
+                $('#selector-' + k).addClass('active');
+                $('#content-' + k).addClass('active');
+            };
+            post_timer = setInterval(post_interval_function, 7000);
+            
+            $('.tab-content').hover(
+                function() {
+                    clearInterval(post_timer);
+                },
+                function () {  
+                    clearInterval(post_timer);
+                    post_timer = setInterval(post_interval_function, 7000);
+                }
+            );
+            $('#tab-nav').hover(
+                function() {
+                    clearInterval(post_timer);
+                },
+                function () {  
+                    clearInterval(post_timer);
+                    post_timer = setInterval(post_interval_function, 7000);
+                }
+            );              
+            
+        });       
+    </script>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <div>
+        {{for count, html_block in enumerate(random_index_block_array):}}
+            <div class="tab-pane" id="index-block-{{=count}}" style="display:none;">
+                {{=XML(html_block)}}
+            </div>
+        {{pass}}
+    </div>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <div class="tabbable tabs-left" style="min-height:300px;">
+        <ul id="tab-nav" class="nav nav-tabs">
+            {{for counter, post in enumerate(reversed(post_list)):}}
+                <li class="" id="selector-{{=counter}}"><a href="#content-{{=counter}}" data-toggle="tab">{{=post['title']}}</a></li>
+            {{pass}}
+        </ul>
+        <div class="tab-content" style="max-height:300px;">
+            {{for count, post in enumerate(reversed(post_list)):}}
+                <div class="tab-pane" id="content-{{=count}}" style="margin-left:15px;">
+                    {{=XML(post['post_content'])}}
+                </div>
+            {{pass}}
+        </div>
+    </div> 
+    <hr><br> 
+	{{for count, html_block in enumerate(random_html_block_array):}}
+		<div class="tab-pane" id="html-block-{{=count}}" style="display:none;">
+            {{=XML(html_block)}}
+		</div>
+	{{pass}}
+    <br><br>
+    <br><br>
+    <script>      
+        
+        var len_html_block = {{=len(random_html_block_array)}} - 1;
+        $('#html-block-0').css('display','block');
+        function an_interval_function(){
+            var i = Math.round((Math.random()) * len_html_block);   
+            if (i >= len_html_block) --i;
+            for(var j = 0; j < len_html_block; j++){
+                var css_picture_info_property = $('#html-block-' + j).css('display');
+                if (css_picture_info_property == 'block'){
+                    var css_picture_info_property_index = j;
+                }
+                $('#html-block-' + j).css('display','none');
+            } 
+            while (i == css_picture_info_property_index){
+                i = Math.round((Math.random()) * len_html_block);
+                if (i >= len_html_block) --i;                     
+            }
+            $('#html-block-' + i).fadeToggle(1000, "linear");
+            $('#html-block-' + i).css('display','block');
+        }; 
+		var len_index_block = {{=len(random_index_block_array)}} - 1;
+        $('#index-block-0').css('display','block');
+        function a_interval_function(){
+            var i = Math.round((Math.random()) * len_index_block);   
+            if (i >= len_index_block) --i;
+            for(var j = 0; j < len_index_block; j++){
+                var css_picture_info_property = $('#index-block-' + j).css('display');
+                if (css_picture_info_property == 'block'){
+                    var css_picture_info_property_index = j;
+                }
+                $('#index-block-' + j).css('display','none');
+            } 
+            while (i == css_picture_info_property_index){
+                i = Math.round((Math.random()) * len_index_block);
+                if (i >= len_index_block) --i;                     
+            }
+            $('#index-block-' + i).fadeToggle(1000, "linear");
+            $('#index-block-' + i).css('display','block');
+		};
+        an_timer = setInterval(an_interval_function,7000);
+        //a_timer = setInterval(a_interval_function,7000);
+
+    </script>
+</div>

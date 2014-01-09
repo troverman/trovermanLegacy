@@ -1,0 +1,50 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+    
+
+    <a id="link_div_investingfor" href="http://www.investingfor.com">
+    <img id="images_div_investingfor" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/investingfor.png" />
+	<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">investingfor</h3>
+    </a>
+        
+</div>
+<div class="main-content"><br>
+    <p class="lead">equalizing, and distributing, investment returns</p>
+    <p class="lead">crowd ownded, transparent, opensource, givingfor partner, and voetr enabled.</p>
+    <p class="lead">help us out, <a>download the program</a>, and join the network!</p>
+    <br>
+    <a href="http://www.github.com/troverman/investingfor_client">github - client</a>
+	<a href="http://www.github.com/troverman/investingfor">github - website</a>
+
+</div>
+
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_investingfor').hover(function() {
+			$('#images_div_investingfor').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_investingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_investingfor').hover(function() {
+			$('#images_div_investingfor').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_investingfor').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+	});
+
+</script>

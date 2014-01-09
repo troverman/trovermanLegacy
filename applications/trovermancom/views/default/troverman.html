@@ -1,0 +1,143 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+    
+<a id="link_div_troverman" href="http://www.troverman.com">
+	<img id="images_div_troverman" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/troverman.png" />
+	<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">troverman</h3>
+</a>    
+</div>
+<div class="main-content"><br>
+    
+	{{for count, image in enumerate(image_array):}}
+    <div id="picture-{{=count}}" style="display:none;">
+			<img id="images_div" src="{{=URL('download',args=image[1])}}" class="img-polaroid" style="margin-left:auto;margin-right:auto;display:block;height:500px;" id="picutre-" />
+        </div>
+    {{pass}}
+    
+    
+    <br><hr><br>
+    
+	
+    <p class="lead"><a href="/about/">about</a></p>
+    <p class="lead"><a href="/mission/">mission</a></p>
+
+	<p class="lead">about me</p>
+    <div id="about-me" style="margin-left:15px;">
+        <p class="lead"><a href="/contact/">contact</a></p>
+
+        <p>i think we have so much potiental. i think if we really believe it, that we are infinite. let's do this.</p>
+        <p>i enjoy the expression of my thoughts and feelings.</p>
+        <p>everything is just an idea.</p>
+        <p>my name is trevor overman is enjoy long walks on the beach, i like to think about things, i like to disconnect sut also to play a part. I am the man, i have a plan to have no plan but to have a plan.</p>
+    </div>
+    <br>
+    
+    <p class="lead">creative</p>
+    <div id="creative" style="margin-left:15px;">
+        <p class="lead">photos</p>
+		<div id="photos" style="margin-left:15px;">
+            <p class="lead"><a href="/troverman/gallery/">gallery</a></p>
+        </div>
+        <p class="lead"><a href="/posts/">posts</a></p>
+		<p class="lead">videos</p>
+        <div id="videos" style="margin-left:15px;">
+            <p class="lead"><a href="http://www.github.com/troverman">youtube - troverman</a></p>
+            <p class="lead"><a href="http://www.github.com/troverman">youtube - evolved us</a></p>
+        </div>
+    </div>
+    <br>
+	<p class="lead">life</p>
+	<div id="life" style="margin-left:15px;">
+        lift is like a game. mission 22921: Dominate!
+        
+        <br><br>
+        inspirational quote scroller
+        
+    </div>
+	<br>
+    <p class="lead">programming</p>
+    <div id="programming" style="margin-left:15px;">
+        <p class="lead"><a href="http://www.github.com/troverman">github</a></p>
+		<p class="lead"><a href="http://www.troverman.com/projects">projects</a></p>
+        <p class="lead"><a id="web-deb-click">web dev</a></p>
+        <div id="web-dev" style="margin-left:15px;">
+            <a id="link_div_cumberland" href="http://www.cumberlandsecurities.com">
+            	<img id="images_div_cumberland" style="height:48px;display:inline-block;float:left;" class="img-polaroid" src="/trovermancom/static/images/cumberland.jpg" />
+            	<h4 style="float:left;margin-left:15px;">Cumberland Securities, Inc.</h4>
+            </a>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <br>
+    <br>
+    <br>
+</div>
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_troverman').hover(function() {
+			$('#images_div_troverman').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_troverman').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_troverman').hover(function() {
+			$('#images_div_troverman').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_troverman').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+        $('#link_div_cumberland').hover(function() {
+			$('#images_div_cumberland').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_cumberland').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_cumberland').hover(function() {
+			$('#images_div_cumberland').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_cumberland').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+
+		var len_picture_array = {{=len(image_array)}};
+		$('#picture-0').css('display','block');
+				        
+		        
+		function interval_function(){
+			
+			var i = Math.round((Math.random()) * len_picture_array);   
+        	if (i >= len_picture_array) --i;
+        	
+			for(var j = 0; j < len_picture_array; j++){
+                var css_picture_info_property = $('#picture-' + j).css('display');
+                if (css_picture_info_property == 'block'){
+                    var css_picture_info_property_index = j;
+                }
+                $('#picture-' + j).css('display','none');
+        	} 
+        	
+			while (i == css_picture_info_property_index){
+				i = Math.round((Math.random()) * len_picture_array);
+        		if (i >= len_picture_array) --i;                     
+			}
+            
+            
+            $('#picture-' + i).fadeToggle(1000, "linear");
+			$('#picture-' + i).css('display','block');
+
+    	}; 
+    //timer = setInterval(interval_function,7000);
+	});
+
+</script>

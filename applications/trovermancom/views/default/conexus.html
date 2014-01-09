@@ -1,0 +1,45 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+    
+	<a id="link_div_conexus" href="http://www.conex.us">
+	<img id="images_div_conexus" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/conexus.png" />
+	<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">conex.us</h3>
+	</a>    
+</div>
+<div class="main-content"><br>
+
+    <p class="lead">what can we do to make this life a better ride for us all,</p>
+    <p class="lead">to help move humanity forward as a species, and to continually foster an environent of convergant environment?</p>
+    <p class="lead">how can we build communities, and how can we work together for a common goal?</p>
+    <p class="lead">open source, crowd owned, voetr enabled.</p>
+</div>
+
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_conexus').hover(function() {
+			$('#images_div_conexus').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_conexus').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_conexus').hover(function() {
+			$('#images_div_conexus').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_conexus').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+	});
+
+</script>

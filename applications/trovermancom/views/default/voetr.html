@@ -1,0 +1,58 @@
+{{extend 'layout.html'}}
+<style>
+    .img-polaroid{padding:2px;}
+</style>
+
+<div style="
+    border-bottom:1px solid rgb(210,210,210);
+    padding:5px;
+    padding-bottom:10px;
+    margin-left:-15px;
+    margin-top:-32px;
+    background-color:rgb(248,248,248);
+    ">
+    
+
+    <a id="link_div_voetr" href="http://www.voetr.com">
+    <img id="images_div_voetr" style="margin-left:12%;height:48px;display:inline-block;" class="img-polaroid" src="/trovermancom/static/images/voetr.png" />
+	<h3 style="position:absolute;display:inline-block;margin-left:20px;margin-top:8px;">voetr</h3>
+    </a>    
+</div>
+<div class="main-content"><br>
+    {{for count, image in enumerate(image_array):}}
+        <div id="picture-{{=count}}" style="">
+			<img id="images_div" src="{{=URL('download',args=image[1])}}" class="img-polaroid" style="margin-left:auto;margin-right:auto;display:block;height:500px;" id="picutre-" />
+     </div>
+    
+    {{pass}}
+
+    <br><hr><br>
+    <p class="lead">empowering the internet</p> 
+	<p class="lead">seeing past partisan politics</p>
+	<p class="lead">transparent, crowd owned, open sourced leadership</p>
+	<p class="lead">conexus</p>
+
+
+
+
+</div>
+
+
+<script>
+	
+	$(document).ready(function() {
+		
+		$('#link_div_voetr').hover(function() {
+			$('#images_div_voetr').css('border','1px solid rgb(100,100,100)');
+        },function(){
+			$('#images_div_voetr').css('border','1px solid rgba(0,0,0,0.2)');
+        });  
+        $('#images_div_voetr').hover(function() {
+			$('#images_div_voetr').css('border','1px solid rgb(100,100,100)');
+		},function(){
+			$('#images_div_voetr').css('border','1px solid rgba(0,0,0,0.2)');
+        });
+        
+	});
+
+</script>
