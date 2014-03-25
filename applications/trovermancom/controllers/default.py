@@ -98,7 +98,14 @@ def lealr():
 ####mission#####################
 ################################    
 def mission():
-    return dict() 
+    import random
+    html_block_list =  db(db.html_block.html_type=='quote').select()
+    complete_html_block_array = []
+    for html in html_block_list:
+        complete_html_block_array.append(html['html_content'])    
+    random_html_block_array = random.sample(complete_html_block_array, random.randint(7,len(complete_html_block_array)))
+    
+    return dict(random_html_block_array=random_html_block_array) 
            
 ################################
 ####index#######################
@@ -206,6 +213,9 @@ def projects():
     random_picture_array = random.sample(complete_picture_array, random.randint(len(complete_picture_array),len(complete_picture_array))) 
     return dict(complete_picture_array=complete_picture_array,random_picture_array=random_picture_array)
 
+################################
+####troverman###################
+################################  
 def troverman():
     image_array = db(db.project_pictures.project_name == 'troverman').select() 
     complete_picture_array=[]
@@ -214,8 +224,21 @@ def troverman():
     import random
     random_picture_array = random.sample(complete_picture_array, random.randint(1,len(complete_picture_array)))
     image_array=random_picture_array
-    return dict(image_array=image_array)   
-     
+
+    html_block_list =  db(db.html_block.html_type=='quote').select()
+    complete_html_block_array = []
+    for html in html_block_list:
+        complete_html_block_array.append(html['html_content'])    
+    random_html_block_array = random.sample(complete_html_block_array, random.randint(7,len(complete_html_block_array)))
+    
+    return dict(
+        image_array=image_array,
+        random_html_block_array=random_html_block_array,
+    )   
+ 
+################################
+####voetr#######################
+################################      
 def voetr():
     image_array = db(db.project_pictures.project_name == 'voetr').select()
     complete_picture_array=[]

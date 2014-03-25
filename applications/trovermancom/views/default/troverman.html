@@ -26,47 +26,35 @@
     {{pass}}
     
     
-    <br><hr><br>
+    <br><br><br>
     
 	
-    <p class="lead"><a href="/about/">about</a></p>
-    <p class="lead"><a href="/mission/">mission</a></p>
+    <p class="lead"><a href="/about/">about</a></p><hr>
+    <p class="lead"><a href="/mission/">mission</a></p><hr>
 
-	<p class="lead">about me</p>
+	<p class="lead">about me</p><hr>
     <div id="about-me" style="margin-left:15px;">
         <p class="lead"><a href="/contact/">contact</a></p>
 
         <p>i think we have so much potiental. i think if we really believe it, that we are infinite. let's do this.</p>
         <p>i enjoy the expression of my thoughts and feelings.</p>
         <p>everything is just an idea.</p>
-        <p>my name is trevor overman is enjoy long walks on the beach, i like to think about things, i like to disconnect sut also to play a part. I am the man, i have a plan to have no plan but to have a plan.</p>
+        <p>my name is trevor overman is enjoy long walks on the beach, i like to think about things, i like to disconnect but also to play a part. I am the man, i have a plan to have no plan but to have a plan.</p>
     </div>
     <br>
     
-    <p class="lead">creative</p>
-    <div id="creative" style="margin-left:15px;">
-        <p class="lead">photos</p>
-		<div id="photos" style="margin-left:15px;">
-            <p class="lead"><a href="/troverman/gallery/">gallery</a></p>
-        </div>
-        <p class="lead"><a href="/posts/">posts</a></p>
-		<p class="lead">videos</p>
-        <div id="videos" style="margin-left:15px;">
-            <p class="lead"><a href="http://www.github.com/troverman">youtube - troverman</a></p>
-            <p class="lead"><a href="http://www.github.com/troverman">youtube - evolved us</a></p>
-        </div>
+    <p class="lead">photos</p>
+	<div id="photos" style="margin-left:15px;"><hr>
+        PHOTOS
     </div>
     <br>
-	<p class="lead">life</p>
-	<div id="life" style="margin-left:15px;">
-        lift is like a game. mission 22921: Dominate!
-        
-        <br><br>
-        inspirational quote scroller
-        
+    <p class="lead"><a href="/posts/">posts</a></p><hr>
+	<p class="lead">videos</p><hr>
+    <div id="videos" style="margin-left:15px;">
+        VIDEOS
     </div>
 	<br>
-    <p class="lead">programming</p>
+    <p class="lead">programming</p><hr>
     <div id="programming" style="margin-left:15px;">
         <p class="lead"><a href="http://www.github.com/troverman">github</a></p>
 		<p class="lead"><a href="http://www.troverman.com/projects">projects</a></p>
@@ -79,6 +67,17 @@
         </div>
     </div>
     <div style="clear:both;"></div>
+    <br><hr>
+    <br>
+    <div id="life" style="margin-left:15px;">        
+        {{for count, html_block in enumerate(random_html_block_array):}}
+            <div class="tab-pane" id="html-block-{{=count}}" style="display:none;">
+                {{=XML(html_block)}}
+            </div>
+        {{pass}}        
+    </div>
+    <br>
+    <br>
     <br>
     <br>
     <br>
@@ -137,7 +136,29 @@
 			$('#picture-' + i).css('display','block');
 
     	}; 
-    //timer = setInterval(interval_function,7000);
+
+        var len_html_block = {{=len(random_html_block_array)}} - 1;
+        $('#html-block-0').css('display','block');
+        function an_interval_function(){
+            var i = Math.round((Math.random()) * len_html_block);   
+            if (i >= len_html_block) --i;
+            for(var j = 0; j < len_html_block; j++){
+                var css_picture_info_property = $('#html-block-' + j).css('display');
+                if (css_picture_info_property == 'block'){
+                    var css_picture_info_property_index = j;
+                }
+                $('#html-block-' + j).css('display','none');
+            } 
+            while (i == css_picture_info_property_index){
+                i = Math.round((Math.random()) * len_html_block);
+                if (i >= len_html_block) --i;                     
+            }
+            $('#html-block-' + i).fadeToggle(1000, "linear");
+            $('#html-block-' + i).css('display','block');
+        }; 
+    timer = setInterval(interval_function,7000);
+    timer1 = setInterval(an_interval_function,7000);
+
 	});
 
 </script>

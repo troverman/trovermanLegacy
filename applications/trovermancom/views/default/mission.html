@@ -37,15 +37,47 @@
     <p class="lead" style="text-align:center;">giving is recieving.</p><hr><br>
     
     
-    <p class="lead" style="text-align:center;">create a transparent world</p>
-    <p class="lead" style="text-align:center;">create a crowd owned world</p>
+    <p class="lead" style="text-align:center;">create a transparent and crowdowned world</p>
+    <p class="lead" style="text-align:center;">create love backed value</p>
     <p class="lead" style="text-align:center;">groupthought not groupthink</p>
 
     
-    <br><br><br><br><br>
-    stats, graph, widget type thing .. .. . scroller. inspirational quote scroller. ... 
-   
+    <br><hr><br>
+    <div id="life" style="margin-left:15px;">        
+        {{for count, html_block in enumerate(random_html_block_array):}}
+            <div class="tab-pane" id="html-block-{{=count}}" style="display:none;">
+                {{=XML(html_block)}}
+            </div>
+        {{pass}}        
+    </div>
+<script>
+    $(document).ready(function() {
+        var len_html_block = {{=len(random_html_block_array)}} - 1;
+        $('#html-block-0').css('display','block');
+        function an_interval_function(){
+            var i = Math.round((Math.random()) * len_html_block);   
+            if (i >= len_html_block) --i;
+            for(var j = 0; j < len_html_block; j++){
+                var css_picture_info_property = $('#html-block-' + j).css('display');
+                if (css_picture_info_property == 'block'){
+                    var css_picture_info_property_index = j;
+                }
+                $('#html-block-' + j).css('display','none');
+            } 
+            while (i == css_picture_info_property_index){
+                i = Math.round((Math.random()) * len_html_block);
+                if (i >= len_html_block) --i;                     
+            }
+            $('#html-block-' + i).fadeToggle(1000, "linear");
+            $('#html-block-' + i).css('display','block');
+        }; 
+        timer = setInterval(an_interval_function,7000);
+    });
+</script>   
 <br>
 <br>
-<br>     
+<br>    
+<br>
+<br>
+
 </div>
